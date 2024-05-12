@@ -29,6 +29,15 @@
 ;;To debug python you need to run realgud:pdb and then use the console. Type help to see all the commands available
 (use-package realgud)
 
+;;Install move-text package and map commands to Ctrl+j/k
+(unless (package-installed-p 'move-text)
+  (package-refresh-contents)
+  (package-install 'move-text))
+(use-package move-text)
+
+(global-set-key (kbd "C-j") 'move-text-up)
+(global-set-key (kbd "C-k") 'move-text-down)
+
 ;; Basic UI customizations
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -100,7 +109,7 @@
   :config
   (require 'dap-chrome))
 
-;; Next.js specific configuration
+;;Next.js specific configuration
 (use-package js2-mode
   :mode "\\.js\\'"
   :config
@@ -266,7 +275,7 @@
    '("0f76f9e0af168197f4798aba5c5ef18e07c926f4e7676b95f2a13771355ce850" default))
  '(org-agenda-files '("~/Documents/MyStuff"))
  '(package-selected-packages
-   '(prettier realgud-lldb realgud typescript-mode ob-ipython org-bullets neotree helm-projectile projectile helm js2-mode dap-mode treemacs prettier-js company lsp-mode web-mode modus-themes evil)))
+   '(move-text prettier realgud-lldb realgud typescript-mode ob-ipython org-bullets neotree helm-projectile projectile helm js2-mode dap-mode treemacs prettier-js company lsp-mode web-mode modus-themes evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
